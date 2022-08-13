@@ -1,0 +1,599 @@
+
+
+MDBoxLayout:
+
+	orientation: "vertical"
+
+
+	MDToolbar:
+		title: 'Hiesu'
+		elevation: 10
+		height : "30dp"
+
+	MDBottomNavigation:
+
+		
+		MDBottomNavigationItem:
+			name: 'kscreen1'
+			text: "Đội hình"
+			icon: "view-array"
+
+			MDBoxLayout:
+				orientation: "horizontal"
+				size: root.width, root.height
+				padding : 20
+
+
+
+				MDTextFieldRect:
+					id: text_in_1
+					size_hint: 1, 1
+					# height: "30dp"
+				MDBoxLayout:
+					size_hint :0.6 , 1
+					orientation: "vertical"	
+					spacing: 50
+					padding: [dp(10),dp(100),dp(10),dp(100)] 
+					MDRoundFlatButton:
+						text: "Chia Đội"
+						theme_text_color: "Custom"
+						text_color: 0, 0, 1, 1	
+						pos_hint : {'center_x' : 0.5 , 'center_y': 0.5}
+						on_press : app.press_chianguoi()
+
+					MDRoundFlatButton:
+						text: "Chia Đều"
+						theme_text_color: "Custom"
+						text_color: 1, 0, 0, 1	
+						pos_hint : {'center_x' : 0.5 , 'center_y': 0.5}
+						on_press : app.press_chiadeu()
+
+					MDRoundFlatButton:
+						text: "IMPORT"
+						theme_text_color: "Custom"
+						text_color: 0, 1, 0, 1	
+						pos_hint : {'center_x' : 0.5 , 'center_y': 0.5}
+						on_press : app.import_team()	
+
+				MDTextFieldRect:
+					id : text_in_2
+					size_hint: 1, 1
+				
+
+
+		
+		MDBottomNavigationItem:
+
+			name: 'kscreen2'
+			text: "Tính tiền"
+			icon: "apps"	
+
+			MDBoxLayout:
+				orientation: "vertical"
+				size: root.width, root.height
+				padding : 30
+
+				MDBoxLayout:
+					orientation : 'horizontal'
+
+					MDBoxLayout:
+						size_hint : 0.75 , 1
+						orientation: "vertical"
+						padding: [dp(0),dp(0),dp(0),dp(50)]
+
+						MDTextField:
+							id :tiensan
+							text:""
+							hint_text: "Tiền Sân"
+
+						MDTextField:
+							id :winer
+							text:""
+							hint_text: "Số Người Thắng"
+
+						MDTextField:
+							id :loser
+							text:""
+							hint_text: "Số Người Thua"
+
+					MDBoxLayout:
+						orientation:"horizontal"
+						MDBoxLayout:
+							orientation:"vertical"
+							padding: [dp(0),dp(0),dp(0),dp(50)]
+							MDLabel:
+								text: "Thắng"
+								halign: "center"
+								
+							MDLabel:
+								text: "Thua"
+								halign: "center"
+							
+							MDLabel:
+								text: "Quỹ"
+								halign: "center"	
+
+						MDBoxLayout:
+							orientation:"vertical"
+							padding: [dp(0),dp(0),dp(0),dp(50)]
+							MDLabel:
+								id :kq_thang
+								text: ""
+								halign: "center"
+								font_size  : 28
+								theme_text_color: "Custom"
+								text_color: 0, 0, 1, 1
+								bold: True
+								
+							MDLabel:
+								id :kq_thua
+								text: ""
+								halign: "center"
+								font_size  : 28
+								theme_text_color: "Custom"
+								text_color: 0, 0, 1, 1
+								bold: True
+
+							MDLabel:
+								id :kq_quy
+								text: ""	
+								halign: "center"
+								font_size  : 28
+								theme_text_color: "Custom"
+								text_color: 0, 0, 1, 1
+								bold: True	
+
+
+
+
+
+
+				MDBoxLayout:
+					orientation : 'horizontal'
+
+					MDBoxLayout:
+						orientation : 'horizontal'
+
+						MDBoxLayout:
+							size_hint :0.6 ,1
+
+							orientation : 'vertical'
+							MDLabel:
+								text: "Đá 10:0"
+								halign: "center"	
+
+							MDLabel:
+								text: "Đá 7:3"
+								halign: "center"	
+							
+							MDLabel:
+								text: "Đá 5:5"
+								halign: "center"		
+
+						MDBoxLayout:
+							size_hint :0.6 ,1
+							orientation: "vertical"
+							 
+
+							MDCheckbox:
+								group: 1
+								background: 'red'
+								on_active: app.checkbox_click(self , self.active , "10:0")
+
+							MDCheckbox:
+								group :1
+								background: 'red'
+								on_active: app.checkbox_click(self , self.active , "7:3")
+
+							MDCheckbox:
+								group: 1
+								background: 'red'
+								on_active: app.checkbox_click(self , self.active , "5:5")
+
+						MDBoxLayout:
+							orientation:"vertical"
+							padding: [dp(0),dp(0),dp(0),dp(40)]
+							spacing: 50
+
+							MDFillRoundFlatIconButton:
+								icon: "codepen"
+								text: "Tính"
+								theme_text_color: "Custom"
+								text_color: 0, 0, 0, 1	
+								pos_hint : {'center_x' : 0.5 , 'center_y': 0.5}
+								on_press :app.press_tinhtien()
+
+							MDFillRoundFlatIconButton:
+								text: "IMPORT"
+								icon: "forward"
+								theme_text_color: "Custom"
+								text_color: 0, 0, 0, 1	
+								pos_hint : {'center_x' : 0.5 , 'center_y': 0.5}	
+								on_press :app.import_tien()
+
+		MDBottomNavigationItem:
+			name: 'kscreen3'
+			text: "Nộp tiền"
+			icon: "check-all"
+
+			MDBoxLayout:
+				orientation:'vertical'
+
+				MDBoxLayout:
+					orientation : "horizontal"
+					size_hint :  1 , 0.12
+					MDLabel:
+						id : sld_left
+						text :""
+						halign:'center'
+						theme_text_color: "Custom"
+						text_color: 0,0,1,1
+						font_size: 22
+						bold: True	
+
+					MDSlider:
+						min: 0
+						max: 100
+						value: 50
+						hint : False
+						step: 1
+						on_value : app.slider_it(*args)
+
+					MDLabel:
+						id : sld_right
+						text:""
+						halign:"center"	
+						theme_text_color: "Custom"
+						text_color: 0,0,1,1
+						font_size: 22
+						bold: True	
+
+
+
+#Sau3
+				MDBoxLayout:
+					orientation : "vertical"
+					padding: [dp(30),dp(0),dp(30),dp(0)]
+
+					MDBoxLayout:
+						orientation :'horizontal'
+						canvas:
+							Color:
+								rgba: 0, 0, 1 , 0.2
+							Rectangle:
+								size: self.size
+								pos:self.pos
+
+						MDCheckbox:
+							size_hint:0.5 , 1
+							background:'red'
+							on_active: app.checkbox_left(self , self.active)
+
+						MDLabel:
+							id : a1
+							text:''
+							halign:'left'
+							
+						MDCheckbox:
+							size_hint:0.5 , 1
+							background: 'red'
+							on_active: app.checkbox_right(self , self.active)
+						MDLabel:
+							id : b1
+							text:''	
+							halign:'left'
+
+					MDBoxLayout:
+						orientation :'horizontal'
+
+						MDCheckbox:
+							size_hint:0.5 , 1
+							background:'red'
+							on_active: app.checkbox_left(self , self.active)
+
+						MDLabel:
+							id: a2
+							text:''
+							halign:'left'
+
+						MDCheckbox:
+							size_hint:0.5 , 1
+							background: 'red'
+							on_active: app.checkbox_right(self , self.active)
+
+						MDLabel:
+							id : b2
+							text:''	
+							halign:'left'
+
+					
+					MDBoxLayout:
+						orientation :'horizontal'
+						canvas:
+							Color:
+								rgba: 0, 0, 1 , 0.2
+							Rectangle:
+								size: self.size
+								pos:self.pos
+
+						MDCheckbox:
+							size_hint:0.5 , 1
+							background:'red'
+							on_active: app.checkbox_left(self , self.active)
+
+						MDLabel:
+							id: a3
+							text:''
+							halign:'left'
+
+						MDCheckbox:
+							size_hint:0.5 , 1
+							background: 'red'
+							on_active: app.checkbox_right(self , self.active)
+
+						MDLabel:
+							id: b3
+							text:''	
+							halign:'left'
+
+					MDBoxLayout:
+						orientation :'horizontal'
+
+						MDCheckbox:
+							size_hint:0.5 , 1
+							background:'red'
+							on_active: app.checkbox_left(self , self.active)
+
+						MDLabel:
+							id: a4
+							text:''
+							halign:'left'
+
+						MDCheckbox:
+							size_hint:0.5 , 1
+							background: 'red'
+							on_active: app.checkbox_right(self , self.active)
+
+						MDLabel:
+							id: b4
+							text:''	
+							halign:'left'
+
+					MDBoxLayout:
+						orientation :'horizontal'
+						canvas:
+							Color:
+								rgba: 0, 0, 1 , 0.2
+							Rectangle:
+								size: self.size
+								pos:self.pos
+
+						MDCheckbox:
+							size_hint:0.5 , 1
+							background:'red'
+							on_active: app.checkbox_left(self , self.active)
+
+						MDLabel:
+							id: a5
+							text:''
+							halign:'left'
+
+						MDCheckbox:
+							size_hint:0.5 , 1
+							background: 'red'
+							on_active: app.checkbox_right(self , self.active)
+
+						MDLabel:
+							id: b5
+							text:''	
+							halign:'left'
+
+					MDBoxLayout:
+						orientation :'horizontal'
+
+						MDCheckbox:
+							size_hint:0.5 , 1
+							background:'red'
+							on_active: app.checkbox_left(self , self.active)
+
+						MDLabel:
+							id: a6
+							text:''
+							halign:'left'
+
+						MDCheckbox:
+							size_hint:0.5 , 1
+							background: 'red'
+							on_active: app.checkbox_right(self , self.active)
+
+						MDLabel:
+							id: b6
+							text:''	
+							halign:'left'
+
+					MDBoxLayout:
+						orientation :'horizontal'
+						canvas:
+							Color:
+								rgba: 0, 0, 1 , 0.2
+							Rectangle:
+								size: self.size
+								pos:self.pos
+
+						MDCheckbox:
+							size_hint:0.5 , 1
+							background:'red'
+							on_active: app.checkbox_left(self , self.active)
+
+						MDLabel:
+							id: a7
+							text:''
+							halign:'left'
+
+						MDCheckbox:
+							size_hint:0.5 , 1
+							background: 'red'
+							on_active: app.checkbox_right(self , self.active)
+
+						MDLabel:
+							id: b7
+							text:''	
+							halign:'left'
+
+					MDBoxLayout:
+						orientation :'horizontal'
+
+						MDCheckbox:
+							size_hint:0.5 , 1
+							background:'red'
+							on_active: app.checkbox_left(self , self.active)
+
+						MDLabel:
+							id: a8
+							text:''
+							halign:'left'
+
+						MDCheckbox:
+							size_hint:0.5 , 1
+							background: 'red'
+							on_active: app.checkbox_right(self , self.active)
+
+						MDLabel:
+							id: b8
+							text:''	
+							halign:'left'
+
+					MDBoxLayout:
+						orientation :'horizontal'
+						canvas:
+							Color:
+								rgba: 0, 0, 1 , 0.2
+							Rectangle:
+								size: self.size
+								pos:self.pos
+
+						MDCheckbox:
+							size_hint:0.5 , 1
+							background:'red'
+							on_active: app.checkbox_left(self , self.active)
+
+						MDLabel:
+							id: a9
+							text:''
+							halign:'left'
+
+						MDCheckbox:
+							size_hint:0.5 , 1
+							background: 'red'
+							on_active: app.checkbox_right(self , self.active)
+
+						MDLabel:
+							id: b9
+							text:''	
+							halign:'left'
+
+					MDBoxLayout:
+						orientation :'horizontal'
+
+						MDCheckbox:
+							size_hint:0.5 , 1
+							background:'red'
+							on_active: app.checkbox_left(self , self.active)
+
+						MDLabel:
+							id: a10
+							text:''
+							halign:'left'
+
+						MDCheckbox:
+							size_hint:0.5 , 1
+							background: 'red'
+							on_active: app.checkbox_right(self , self.active)
+
+						MDLabel:
+							id: b10
+							text:''	
+							halign:'left'
+
+					MDBoxLayout:
+						orientation :'horizontal'
+						canvas:
+							Color:
+								rgba: 0, 0, 1 , 0.2
+							Rectangle:
+								size: self.size
+								pos:self.pos
+
+						MDCheckbox:
+							size_hint:0.5 , 1
+							background:'red'
+							on_active: app.checkbox_left(self , self.active)
+
+						MDLabel:
+							id: a11
+							text:''
+							halign:'left'
+
+						MDCheckbox:
+							size_hint:0.5 , 1
+							background: 'red'
+							on_active: app.checkbox_right(self , self.active)
+
+						MDLabel:
+							id: b11
+							text:''	
+							halign:'left'
+
+					MDBoxLayout:
+						orientation :'horizontal'
+
+						MDCheckbox:
+							size_hint:0.5 , 1
+							background:'red'
+							on_active: app.checkbox_left(self , self.active)
+
+						MDLabel:
+							id: a12
+							text:''
+							halign:'left'
+
+						MDCheckbox:
+							size_hint:0.5 , 1
+							background: 'red'
+							on_active: app.checkbox_right(self , self.active)
+
+						MDLabel:
+							id: b12
+							text:''	
+							halign:'left'
+
+																	
+								
+
+
+				MDBoxLayout:
+					orientation:'horizontal'
+					size_hint: 1 , 0.08
+					spacing : 50
+					padding	: [dp(0),dp(10),dp(0),dp(0)]
+
+				
+					MDLabel:
+						id: txt_ketqua
+						text: ''
+						theme_text_color: "Custom"
+						text_color: 1,0,0,1
+						font_size: 24
+						bold: True
+						halign :"right"
+
+					MDLabel:
+						id: txt_ketquaquy
+						text: 'Quỹ : 0K'
+						theme_text_color: "Custom"
+						text_color: 1,0,0,1
+						font_size: 24
+						bold: True	
+
+
+			
